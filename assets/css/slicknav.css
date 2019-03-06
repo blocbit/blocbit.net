@@ -8,8 +8,8 @@
   display: block;
   float: right;
   height: 35px;
-  line-height: 50px;
-  padding: 10px 0 9px;
+ /* line-height: 50px; */
+  padding: 5px 5px 10px 13px;
   position: relative;
   vertical-align: middle;
   width: 44px;

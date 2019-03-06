@@ -336,7 +336,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 .top-nav-collapse .navbar-brand img {
-  width: 65%;
+  width: 75%;
 }
 
 .top-nav-collapse .navbar-nav .nav-link {
@@ -532,7 +532,7 @@ a.back-to-top:hover, a.back-to-top:focus {
   .navbar-brand {
     position: absolute;
     padding: 15px 15px;
-    top: -7px;
+    top: -7px !important;
   }
   .navbar-brand img {
     width: 75%;
@@ -1344,3 +1344,28 @@ a.back-to-top:hover, a.back-to-top:focus {
     border-top-color: #e3e3e3;
     border-width: 15px;
   }
+  
+  
+.modal-dialog {
+	padding-top:15%;
+      max-width: 800px;
+      margin: 30px auto;
+  }
+
+
+
+.modal-body {
+  position:relative;
+  padding:0px;
+}
+.close {
+  position:absolute;
+  right: 5px;
+  top: -30px;
+  z-index:999;
+  font-size:2rem;
+  font-weight: normal;
+  color:#fff;
+  opacity:1;
+  cursor:pointer;
+}
