@@ -826,7 +826,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 .social .instagram:hover {
-  color: #fb3958;
+  color: #f7532e;
 }
 
 .social .foursqare:hover {
@@ -931,10 +931,10 @@ a.back-to-top:hover, a.back-to-top:focus {
   height: 100%;
   position: absolute;
   top: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(66, 66, 63, 0.85);
   opacity: 0;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 50%;
   transition: all 0.3s ease-in-out 0s;
   -moz-transition: all 0.3s ease-in-out 0s;
   -webkit-transition: all 0.3s ease-in-out 0s;
@@ -987,7 +987,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 .team-item .overlay-social-icon .social-icons li a:hover .lni-github {
-  background: #fb3958;
+  background: #f7532e;
 }
 
 .team-item .overlay-social-icon .social-icons li a:hover .lni-twitter-filled {
@@ -995,15 +995,21 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 .team-item .overlay-social-icon .social-icons li a:hover .lni-instagram-filled {
-  background: #fb3958;
+  background: -webkit-linear-gradient(top,#b437d4, #fb3958);
 }
 
 .team-item .overlay-social-icon .social-icons li a:hover .lni-youtube {
   background: #d34836;
 }
 .team-item .info-text {
-  padding: 15px 20px;
-  background: #fff;
+  padding: 10px 0px;
+  min-width: 170px;
+  display: inline-block;
+  background: -webkit-linear-gradient(top,#ddd, #d8b13b);
+  margin-top: 5%;
+  font: 32px 'Patua One', sans-serif;
+  text-shadow: 0px -1px 0px rgba(0,0,0,0.3);
+  box-shadow: inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 20px rgba(0,0,0,0.1), 0px 1px 1px rgba(0,0,0,0.4);
 }
 
 .team-item .info-text h3 {
@@ -1221,7 +1227,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 .footer-area .social-icon li .instagram:hover {
-  background: #fb3958;
+  background: #f7532e;
 }
 
 .footer-area .social-icon li .foursqare:hover {
@@ -1369,3 +1375,5 @@ a.back-to-top:hover, a.back-to-top:focus {
   opacity:1;
   cursor:pointer;
 }
+
+	
