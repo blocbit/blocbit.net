@@ -139,38 +139,7 @@ if (! empty($_POST)) {
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
-
-<style>
-.cbox {
-  width: 100%;
-  min-height: 150px;
-  line-height: 2;
-  text-align: center;
-}
-.cdokey {
-  display: none;
-  background-color: orange;
-  color: white;
-  font-weight: bold;
-  margin: 10px 0;
-  padding: 10px;
-}
-.cerror {
-  display: none;
-  background-color: tomato;
-  color: white;
-  padding: 10px;
-  font-weight: bold;
-}
-.cdone {
-  display: none;
-  background-color: darkgreen;
-  color: white;
-  padding: 10px;
-  font-weight: bold;
-}
-</style>
-
+	  
 </head>
 <body>
 
