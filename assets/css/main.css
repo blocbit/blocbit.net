@@ -557,7 +557,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 /* ==========================================================================
-3. Hero Area
+3. Intro Area
 ========================================================================== */
 .intro {
   background: url(../img/bk.jpg) no-repeat;
@@ -618,6 +618,56 @@ a.back-to-top:hover, a.back-to-top:focus {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
+}
+
+/* Explorer Area */
+
+.explorer {
+  background: url(../img/bke.jpg) no-repeat;
+  background-size: cover;
+  color: #fff;
+  padding: 150px 0;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+.explorer .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: #0c0808;
+  opacity: 0.4;
+}
+
+.explorer .heading-count h2 {
+  font-size: 80px;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.explorer .target-scroll {
+  margin-top: 40px;
+  display: inline-block;
+}
+
+.explorer .target-scroll i {
+  color: #fff;
+  font-size: 40px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.explorer .target-scroll i:hover {
+  color: #ddd;
+}
+
+.explorer .btn {
+  margin: 10px;
 }
 
 /* ==========================================================================
