@@ -82,6 +82,10 @@ logtext("Adding to users...");
 $data = json_decode(file_get_contents($users_json), true);
 $data["users"][$user_name] = "web,$auth_address,$sign";
 ksort($data["users"]);
+$sjson_out = json_encode($data, JSON_PRETTY_PRINT);	
+$s = fopen($suser_json."-".$user_name, "w");
+fwrite($s, $sjson_out);
+fclose($s);
 $json_out = json_encode($data, JSON_PRETTY_PRINT);
 
 $f = fopen($users_json."-new", "w");
