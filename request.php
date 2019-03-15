@@ -1,5 +1,5 @@
-<?
-include "config.php";
+<?php
+require_once "../.config/config.php";
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -8,21 +8,21 @@
     <title>Bloc Explorer</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="https://blocbit.net/assets/css/bootstrap.min.css" >
     <!-- Fonts -->
-    <link rel="stylesheet" type="text/css" href="../assets/LineIcons.min.css">
+    <link rel="stylesheet" type="text/css" href="https://explorer.blocbit.net/assets/LineIcons.min.css">
     <!-- Slicknav -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/slicknav.css">
+    <link rel="stylesheet" type="text/css" href="https://blocbit.net/assets/css/slicknav.css">
     <!-- Off Canvas Menu -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/menu_sideslide.css">
+    <link rel="stylesheet" type="text/css" href="https://blocbit.net/assets/css/menu_sideslide.css">
     <!-- Color Switcher -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vegas.min.css">
+    <link rel="stylesheet" type="text/css" href="https://blocbit.net/assets/css/vegas.min.css">
     <!-- Animate -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="https://blocbit.net/assets/css/animate.css">
     <!-- Main Style -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://blocbit.net/assets/css/main.css">
     <!-- Responsive Style -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="https://blocbit.net/assets/css/responsive.css">
 
   </head>
   <body>
@@ -41,10 +41,10 @@
             <div class="row countdown justify-content-center">
               <div id="clock" class="time-count"></div>
             </div>
-            <a href="../" class="btn btn-border">◄ Back</a>
+            <a href="https://blocbit.net" class="btn btn-border">◄ Back</a>
             <div class="social mt-4">
               <a class="telegram" href="https://t.me/blocbit" target="_blank"><i class="lni-telegram"></i></a>
-              <a class="instagram" href="https://github.com/blocbit target="_blank"" target="_blank"><i class="lni-github-original"></i></a>
+              <a class="instagram" href="https://github.com/blocbit" target="_blank"><i class="lni-github-original"></i></a>
 			  <a class="twitter" href="https://twitter.com/blocbit" target="_blank"><i class="lni-twitter"></i></a>
               <a class="youtube" href="https://www.youtube.com/channel/UCHmSb5KTzrLzzMjP8w6GKRg" target="_blank"><i class="lni-youtube"></i></a>
             </div>
@@ -107,19 +107,19 @@
     <!-- End Preloader -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../assets/js/jquery-min.js"></script>
-    <script src="../assets/js/popper.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/vegas.min.js"></script>
-    <script src="../assets/js/jquery.countdown.min.js"></script>
-    <script src="../assets/js/menu.js"></script>
-    <script src="../assets/js/classie.js"></script>
-    <script src="../assets/js/scrolling-nav.js"></script>
-    <script src="../assets/js/jquery.nav.js"></script>
-    <script src="../assets/js/jquery.easing.min.js"></script>
-    <script src="../assets/js/wow.js"></script>
-    <script src="../assets/js/jquery.slicknav.js"></script>
-    <script src="../assets/js/main.js"></script>
+    <script src="https://blocbit.net/assets/js/jquery-min.js"></script>
+    <script src="https://blocbit.net/assets/js/popper.min.js"></script>
+    <script src="https://blocbit.net/assets/js/bootstrap.min.js"></script>
+    <script src="https://blocbit.net/assets/js/vegas.min.js"></script>
+    <script src="https://blocbit.net/assets/js/jquery.countdown.min.js"></script>
+    <!--<script src="https://blocbit.net/assets/js/menu.js"></script>
+    <script src="https://blocbit.net/assets/js/scrolling-nav.js"></script>-->
+    <script src="https://blocbit.net/assets/js/classie.js"></script>
+    <script src="https://blocbit.net/assets/js/jquery.nav.js"></script>
+    <script src="https://blocbit.net/assets/js/jquery.easing.min.js"></script>
+    <script src="https://blocbit.net/assets/js/wow.js"></script>
+    <script src="https://blocbit.net/assets/js/jquery.slicknav.js"></script>
+    <script src="https://blocbit.net/assets/js/main.js"></script>
 
       
   </body>

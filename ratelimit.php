@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "leaky bucket" throttling method: keeps track of the last request ($last_api_request) 
 and a ratio of the number of requests/limit for the time frame ($minute_throttle). 

@@ -1,4 +1,4 @@
-<?
+<?php
 $logfile = getcwd()."/.log.txt";
 function logtext($text) {
 	global $logfile;

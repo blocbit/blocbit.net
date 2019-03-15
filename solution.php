@@ -1,5 +1,5 @@
-<?
-include "config.php";
+<?php
+require_once "../.config/config.php";
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
@@ -11,7 +11,6 @@ if (isset($_SERVER['HTTP_REFERER']) and strpos($_SERVER['HTTP_REFERER'], $site) 
 	logdie("Referer error.");
 }
 
-
 logtext("Solution: Parsing parameters...");
 logtext($_POST);
 
@@ -19,6 +18,10 @@ $_POST["work_id"] = 0+$_POST["work_id"];
 
 $auth_address = $_POST["auth_address"];
 $user_name = trim($_POST["user_name"], " ");
+$public_key = $_POST["public_key"];
+$btc_address = $_POST["btc_address"];
+$pin = $_POST["pin"];
+$ip = get_ip();
 
 if (!preg_match("#^[a-z0-9]{1,17}$#", $user_name)) {
 	header("HTTP/1.0 400 Bad Request");
@@ -30,7 +33,11 @@ if (!preg_match("#^[A-Za-z0-9]{1,40}$#", $auth_address)) {
 	logdie("Bad address.");
 }
 
-
+/*logtext("Checking advocates...");
+if (file_exists($ausers_json)){
+	unlink($users_json);
+	rename ($ausers_json,$users_json);	
+}*/
 
 logtext("Loading archive users...");
 $users = array();
@@ -57,6 +64,13 @@ foreach ($users as $data_user_name => $data_cert) {
 	}
 }
 
+/* Hash pin*/
+$options = ['cost' => 12,];
+$hash = password_hash($pin, PASSWORD_BCRYPT, $options);
+
+logtext($public_key."-pk");
+logtext($btc_address."-btc");
+logtext($hash."-hash");
 
 logtext("Verify work...");
 $res = verifyWork($_POST["work_id"], $_POST["work_solution"]);
@@ -64,7 +78,6 @@ if (!$res or !$_POST["work_solution"]) {
 	header("HTTP/1.0 400 Bad Request");
 	logdie("Bad solution :(");
 }
-
 
 logtext("Good solution, signing...");
 chdir($zeronet_dir);
@@ -74,25 +87,50 @@ $sign = $out[sizeof($out)-1];
 $back = implode("\n", $out);
 logtext($back);
 logtext($sign);
+logtext($ip);
 
 if ($sign{strlen($sign)-1} != "=") logdie("User sign error, please contact site owner!");
 
 
-logtext("Adding to users...");
+$auser_json = $ausers_dir.$user_name.".json";
 $data = json_decode(file_get_contents($users_json), true);
+$wdata = json_decode(file_get_contents($wl_json), true);
+
+
+//$wdata =array();
+
+$sdata =array();
+$sdata['name']  = $user_name ;
+$sdata['id']  = "" ;
+$sdata['webauthnkeys']  = "" ;
+$sdata['title']  = "adv" ;
+$sdata['add']  = $auth_address ;
+$sdata['sign']  = $sign ;
+$sdata['blockey']  = $public_key ;
+$sdata['btckey']  = $btc_address ;
+$sdata['pinhash']  = $hash ;
+
+
 $data["users"][$user_name] = "web,$auth_address,$sign";
 ksort($data["users"]);
-$sjson_out = json_encode($data, JSON_PRETTY_PRINT);	
-$s = fopen($suser_json."-".$user_name, "w");
-fwrite($s, $sjson_out);
-fclose($s);
 $json_out = json_encode($data, JSON_PRETTY_PRINT);
 
-$f = fopen($users_json."-new", "w");
-fwrite($f, $json_out);
-fclose($f);
-chmod($users_json."-new", 0666);
+logtext("Adding advocate bit...");	
+$u = fopen($auser_json, "w");
+fwrite($u, json_encode($sdata, JSON_PRETTY_PRINT));
+fclose($u);
 
+logtext("Adding to whitelist...");
+$wdata[$public_key] = $ip;
+$w = fopen($wl_json, "w");
+fwrite($w, json_encode($wdata, JSON_PRETTY_PRINT));
+fclose($w);
+
+logtext("Adding to advocates...");
+$a = fopen($ausers_json, "w");
+fwrite($a, $json_out);
+fclose($a);
+//chmod($ausers_json, 0666);
 
 logtext("Signing...");
 $out = array();
@@ -102,6 +140,9 @@ logtext($out);
 if (strpos($out, "content.json signed!") === false) {
 	header("HTTP/1.0 500 Internal Server Error");
 	logdie("Site sign error, please contact site owner!");
+}else{
+	header("HTTP/1.0 200 Ok");
+	echo "Success, your account will be active in time for the next bloc cycle";		
 }
 
 /*
@@ -116,7 +157,5 @@ if (strpos($out, "Successfuly published") === false) {
 	logdie("Publish error, please contact site owner!");
 }
 */
-
-echo "OK";
 
 ?>

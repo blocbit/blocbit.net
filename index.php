@@ -1,8 +1,8 @@
-<?php
-include_once(dirname(__DIR__).'/assets/vendor/CBOR/CBOREncoder.php');
-include_once(dirname(__DIR__).'/assets/vendor/CBOR/Types/CBORByteString.php');
-include_once(dirname(__DIR__).'/assets/vendor/CBOR/CBORExceptions.php');
-include_once(dirname(__DIR__).'/assets/vendor/webauthn/webauthn.php');
+﻿<?php
+include_once(dirname(__DIR__).'/vendor/CBOR/CBOREncoder.php');
+include_once(dirname(__DIR__).'/vendor/CBOR/Types/CBORByteString.php');
+include_once(dirname(__DIR__).'/vendor/CBOR/CBORExceptions.php');
+include_once(dirname(__DIR__).'/vendor/webauthn/webauthn.php');
 
 define('USER_DATABASE', dirname(__DIR__).'/.bbu/');
 if (! file_exists(USER_DATABASE)) {
@@ -47,38 +47,42 @@ if (! empty($_POST)) {
 	  $pin = $_POST['registerpin'];
       $userid = md5(time() . '-'. rand(1,1000000000));
 	  $db = userpath($username);
+	  $string = file_get_contents($db);
+	  $json_a = json_decode($string, true);
 
       if (file_exists($db)) {	
-		$string = file_get_contents($db);
-		$json_a = json_decode($string, true);
 			if 
-			(empty($json_a['webauthnkeys']))
-			{
-				unlink($db);	
+			(!empty($json_a['webauthnkeys']))
+			{	
+			oops("'{$username}' is already attached to a key");
 			}
-			else{	
-			oops("Bit '{$username}' already exists");
-			}
+		}else{
+			oops("'{$username}' is not registered, Register a Bit ID at https://localhost/bloc.bit");
 		}
-		/* Hash password test*/
+		
+		$hash = $json_a['pinhash'];
+		
+		/* Hash password example
 		$options = ['cost' => 12,];
-		$hash = password_hash($pin, PASSWORD_BCRYPT, $options);
-		
-		
+		$hash = password_hash($pin, PASSWORD_BCRYPT, $options);*/
 		
 		/* Verify Hash */
-		if (!password_verify('12345', $hash)) {
+		if (!password_verify($pin, $hash)) {
 			oops ("Invalid password. Register a Bit ID at https://localhost/bloc.bit");
 		}
 
+		$json_a['id'] = $userid ;
+		$json_a['webauthnkeys'] = $webauthn->cancel() ;
+		/*$u = fopen($db, "w");
+		 /*fwrite($u, json_encode($json_a, JSON_PRETTY_PRINT));
+		fclose($u);
       /* Create a new user in the database. In principle, you can store more 
          than one key in the user's webauthnkeys,
          but you'd probably do that from a user profile page rather than initial 
          registration. The procedure is the same, just don't cancel existing 
          keys like this.*/
-      file_put_contents(userpath($username), json_encode(['name'=> $username,
-                                                          'id'=> $userid,
-                                                          'webauthnkeys' => $webauthn->cancel()]));
+		 
+      file_put_contents($db, json_encode($json_a));
       $_SESSION['username'] = $username;
       $j = ['challenge' => $webauthn->prepare_challenge_for_registration($username, $userid)];
       break;
@@ -162,7 +166,7 @@ if (! empty($_POST)) {
                 <a class="nav-link" href="#keychain" target="_blank">Keychain</a>
               </li>   
 			  <li class="nav-item">
-                <a class="nav-link" href="./blocchain" target="_blank">Bloc Explorer(alpha)</a>
+                <a class="nav-link" href="https://explorer.blocbit.net" target="_blank">Bloc Explorer(alpha)</a>
               </li>
             </ul>
           </div>
@@ -180,7 +184,7 @@ if (! empty($_POST)) {
               <span class="lni-menu"></span>
               <span class="lni-menu"></span>
             </button>
-            <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" alt=""></a>
+            <a href="https://blocbit.net" class="navbar-brand"><img src="assets/img/logo.png" alt=""></a>
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
@@ -208,7 +212,7 @@ if (! empty($_POST)) {
             <a href="#keychain" target="_blank">Keychain</a>
           </li>
 		   <li>
-            <a href="./blocchain" target="_blank">Bloc Explorer (Alpha)</a>
+            <a href="https://explorer.blocbit.net" target="_blank">Bloc Explorer (Alpha)</a>
           </li>
         </ul>
         <!-- Mobile Menu End -->
@@ -234,7 +238,7 @@ if (! empty($_POST)) {
             <a href="#services" class="btn btn-border">Bloc What?</a>
             <div class="social mt-4">
               <a class="telegram" href="https://t.me/blocbit" target="_blank"><i class="lni-telegram"></i></a>
-              <a class="instagram" href="https://github.com/blocbit target="_blank"" target="_blank"><i class="lni-github-original"></i></a>
+              <a class="instagram" href="https://github.com/blocbit" target="_blank"><i class="lni-github-original"></i></a>
 			  <a class="twitter" href="https://twitter.com/blocbit" target="_blank"><i class="lni-twitter"></i></a>
               <a class="youtube" href="https://www.youtube.com/channel/UCHmSb5KTzrLzzMjP8w6GKRg" target="_blank"><i class="lni-youtube"></i></a>
             </div>
@@ -376,7 +380,7 @@ if (! empty($_POST)) {
                   <div class="overlay-social-icon text-center">
                     <ul class="social-icons">
                       <li><a href="https://instagram.com/bloc.bit" target="_blank"><i class="lni-instagram-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="https://twitter.com/consensuscandi" target="_blank"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
+                      <li><a href="https://twitter.com/bitcandi" target="_blank"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
 					  <li><a href="https://www.youtube.com/channel/UCHmSb5KTzrLzzMjP8w6GKRg" target="_blank"><i class="lni-youtube" aria-hidden="true"></i></a></li>
                     </ul>
                   </div>
