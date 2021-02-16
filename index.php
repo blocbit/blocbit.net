@@ -184,7 +184,7 @@ if (! empty($_POST)) {
               <span class="lni-menu"></span>
               <span class="lni-menu"></span>
             </button>
-            <a href="https://blocbit.net" class="navbar-brand"><img src="assets/img/logo.png" alt=""></a>
+            <a href="http://blocbit.org" class="navbar-brand"><img src="assets/img/logo.png" alt=""></a>
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
@@ -226,7 +226,7 @@ if (! empty($_POST)) {
         <div class="row text-center">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="heading-count">
-              <h2>Mainnet</h2>
+              <a href="http://loxxon.org" target="_blank"><h2>Loxxon</h2></a>
               <p>Launches in ...</p>
             </div>
           </div>
@@ -257,10 +257,10 @@ if (! empty($_POST)) {
               Whats a bloc.bit
             </h6>
             <h2 class="section-title">
-              <a href="#" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/dfsRQyYXOsQ" data-target="#modWhat">Bitcoin Concensus</a>
+              <a href="#" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/dfsRQyYXOsQ" data-target="#modWhat">We build Security Dapps</a>
             </h2>
             <div class="section-info">
-              Poor bitcoin has been forked to many times. We're here to try and make an honest blockchain of her ..
+              You have the right to protect you privacy, the freedom to annouce yourself if and whenever you want to
             </div>
           </div>            
         </div>
@@ -272,7 +272,7 @@ if (! empty($_POST)) {
                 <i class="lni-mobile"></i>
               </div>
               <h3><a href="#" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/Jfrjeg26Cwk" data-target="#modWhat">Anonymous</a></h3>
-              <p>Nobody knows who you are unless you tell them. You are free to make that choice</p>
+              <p>By default nobody knows who you are unless you tell them. You are free to make that choice</p>
             </div>
           </div> 
           <div class="col-lg-4 col-md-6 col-xs-12 fadeInUp" data-animation="fadeInUp" data-delay="300">
